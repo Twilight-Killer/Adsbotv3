@@ -32,9 +32,9 @@ try:
     GROUP_IDS = config("GROUP_IDS")
     MSGS = config("MESSAGES")
     TIME_DELAY = config("TIME_DELAY", cast=int)
-    PM_MSG_1 = config("PM_MSG_1")
-    PM_MSG_2 = config("PM_MSG_2")
-    PM_MSG_3 = config("PM_MSG_3")
+    PM_MSG_1 = config("PM_MSG_1", default=None)
+    PM_MSG_2 = config("PM_MSG_2", default=None)
+    PM_MSG_3 = config("PM_MSG_3", default=None)
     PM_MEDIA = config("PM_MEDIA", default=None)
     PM_LOG_CHAT = config("PM_LOG_CHAT", cast=int)
 except Exception as e:
