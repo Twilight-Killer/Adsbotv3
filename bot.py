@@ -27,7 +27,7 @@ log.info("\n\nStarting...")
 try:
     API_ID = config("API_ID", default="25224776", cast=int)
     API_HASH = config("API_HASH", default="50ce92629342c68eff57bcbbf43c8047")
-    SESSION = config("SESSION", default="1BVtsOLcBuwQh7XddspnEu-XQA5nqIjk19BWktgNNxhAkqLMnPlgp31CvLvZ5NNYxJE_ifJIYkAEXynpQkomhrCLQix8T21J8Sf7QfNzvIh9aM47xV-wh4b5E4vxzgWHzZEeciEffMAQudX-h9D6ERa_jjiVlfr5zQCo0ufZ6msml_178TxKRwmNngOSzB8j5oE1dieLsgKiHjZVQJhB0akc66esbDAzePR6S4ZEz8uKEC73zZYGxzgCEDcqPl-HBFZK93T6jABnbJ7ADSH9pBJJ2VYROH4a5CNkLLHIEXPYjE0zLl7n1cYd1J13SjI2PniFyO95e_op4kvaJCK2RKkaao0dKqOE=")
+    SESSION = config("SESSION", default="1BVtsOG4Bu2f6CnW0GJU7WvNd_HjD9HjM_GMr7Q92ko1YIyRO-X5msFPKh6RYcSJzA5CNAxiKVQtF1Wgt5v_cLqibMorjJ-6sxR4k20jRd51j-pIjfIQk9z3RWtdrtZFwUUlJQPzueS_LuuiDfrbNBKJAxN7ZMMLEkVbUVlt8gIpG_wn5M8hwgMmEB9EHsMANWoJqlzr6uNIq7UzFZJ1e4irEQMpwgnNHjxNdHDyzWb1DEya9htWz-t3InutCcNdXdL8KjL7oQiZtOqbm9SX2BEncAAMRwAWEn1yQFOBE8_WmR9M-GmOVB-XQFT0mrFtDJpIvSoTrbWNomcQCnHQ0M_bB2xJ5mWg=")
     owonerz = config("OWNERS", default="5479471038")
     GROUP_IDS = config("GROUP_IDS", default="-1001798503017")
     MSGS = config("MESSAGES", default="Helloooooooo || Dm me for free fun guys 💋💋 || Real meet available 🥰🫶 || I want a boy for friends with benefits anyone interested please dm me")
