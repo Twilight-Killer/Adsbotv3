@@ -45,8 +45,8 @@ GROUP_IDS = [int(i) for i in GROUP_IDS.split(" ")]
 
 log.info("\n")
 log.info("-" * 150)
-log.info("\t" * 5 + f"Loaded {len(MESSAGES)} messages.")
-log.info("\t" * 5 + f"Number of target chats: {len(GROUP_IDS)}")
+log.info("\t" * 5 + f"Memuat {len(MESSAGES)} pesan.")
+log.info("\t" * 5 + f"Target chat: {len(GROUP_IDS)}")
 log.info("-" * 150)
 log.info("\n")
 
@@ -62,18 +62,18 @@ except Exception as e:
 
 @client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,stat$"))
 async def start(event):
-    await event.reply("ADsBot is running.")
+    await event.reply("**Scheduler is running.**")
 
 
 @client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,skejul$"))
 async def get_msgs(event):
-    txt = f"**Total messages added:** {len(MESSAGES)}\n\n"
+    txt = f"**Total pesan schedule berjalan:** {len(MESSAGES)}\n\n"
     for c, i in enumerate(MESSAGES, start=1):
         txt += f"**{c}.** {i}\n"
     if len(txt) >= 4096:
         with open("msgs.txt", "w") as f:
             f.write(txt.replace("**", ""))
-        await event.reply("All added messages", file="msgs.txt")
+        await event.reply("Semua pesan ditambah", file="msgs.txt")
         remove("msgs.txt")
     else:
         await event.reply(txt)
@@ -106,29 +106,23 @@ async def pm_msg(event):
 
 async def send_msg():
     global TIMES_SENT
-    log.info(f"Number of times message was sent: {TIMES_SENT}")
+    log.info(f"Pesan terkirim: {TIMES_SENT}")
     for GROUP_ID in GROUP_IDS:
         try:
             await client.send_message(GROUP_ID, random.choice(MESSAGES))
         except Exception as er:
-            log.warning(f"Error sending message: {str(er)}")
+            log.warning(f"Error mengirim pesan: {str(er)}")
     TIMES_SENT += 1
 
 
 logging.getLogger("apscheduler.executors.default").setLevel(
     logging.WARNING
 )  # silent, log only errors.
-log.info(f"Starting scheduler with a {TIME_DELAY} second gap...")
+log.info(f"Memulai schedule dalam {TIME_DELAY} detik...")
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(send_msg, "interval", seconds=TIME_DELAY)
 scheduler.start()
-log.info("\n\nStarted.\n(c) @xditya.\n")
+log.info("\n\nStarted.\n(c) @HaoTogelLivedraw.\n")
 
 
 client.run_until_disconnected()
-# run it
-try:
-    client.run_until_disconnected()
-except KeyboardInterrupt:
-    log.info("Stopped.")
-    exit(0)
