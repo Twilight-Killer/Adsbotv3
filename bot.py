@@ -62,7 +62,7 @@ except Exception as e:
 
 @client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,stat$"))
 async def start(event):
-    await event.reply("**Scheduler is running.**")
+    await event.reply("**Scheduler is running...**")
 
 
 @client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,skejul$"))
