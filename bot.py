@@ -2,6 +2,7 @@ import logging
 import random
 import asyncio
 import contextlib
+import os
 from os import remove
 from time import time
 from datetime import datetime
@@ -30,7 +31,6 @@ try:
     PM_MSG_1 = config("PM_MSG_1", default=None)
     PM_MSG_2 = config("PM_MSG_2", default=None)
     PM_MSG_3 = config("PM_MSG_3", default=None)
-    PM_MEDIA = config("PM_MEDIA", default=None)
     PM_LOG_CHAT = config("PM_LOG_CHAT", default=None, cast=int)
 except Exception as e:
     log.warning("Konfigurasi vars salah %s", {e})
@@ -89,17 +89,17 @@ async def pm_msg(event):
         await event.forward_to(PM_LOG_CHAT)
     if event.sender_id not in PM_CACHE:
         await asyncio.sleep(random.randint(5, 10))
-        await event.reply(PM_MSG_1)
+        await event.respond(PM_MSG_1)
         PM_CACHE.update({event.sender_id: 1})
     else:
         times = PM_CACHE[event.sender_id]
         if times == 1:
             await asyncio.sleep(random.randint(5, 10))
-            await event.reply(PM_MSG_2, file=PM_MEDIA)
+            await event.respond(PM_MSG_2)
             times += 1
         elif times == 2:
             await asyncio.sleep(random.randint(5, 10))
-            await event.reply(PM_MSG_3, file=PM_MEDIA)
+            await event.respond(PM_MSG_3)
             times += 1
         PM_CACHE.update({event.sender_id: times})
 
