@@ -124,7 +124,7 @@ logging.getLogger("apscheduler.executors.default").setLevel(
     logging.WARNING
 )  # silent, log only errors.
 log.info(f"Starting scheduler with a {TIME_DELAY} second gap...")
-scheduler = AsyncIOScheduler()
+scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(send_msg, "interval", seconds=TIME_DELAY)
 scheduler.start()
 log.info("\n\nStarted.\n(c) @xditya.\n")
