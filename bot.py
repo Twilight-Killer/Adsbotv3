@@ -1,15 +1,10 @@
-# -*- coding: utf-8 -*-
-# < (c) @xditya , https://xditya.me >
-# ADsBot, 2021.
-
-# Paid source, re-distributing without contacting the code owner is NOT allowed.
-
 import logging
 import random
 import asyncio
 import contextlib
 from os import remove
-
+from time import time
+from datetime import datetime
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from decouple import config
 from telethon import TelegramClient, events
